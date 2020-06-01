@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+    <h:head>
+        <title>Conversor de Reais para Dollar</title>
+    </h:head>
+    <h:body>
+<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Valor em Real brasileiro:" for="reais" />
+			<h:inputText value="#{conversorBean.conversor.reais}"
+				id="reais" required="true">
+			</h:inputText>
+				 
+				<h:outputLabel value="Taxa de câmbio atual:" for="dolar" />
+			<h:inputText value="#{conversorBean.conversor.dollar}"
+				id="dolar" required="true">
+			</h:inputText>
+		</h:panelGrid>
+		<h:commandButton value="Converter"
+			action="#{conversorBean.converterdollar}" />
+		<hr />
+		
+<h:outputText value="#{conversorBean.conversor.reais} Reais brasileiro é igual a "
+			rendered="#{not empty conversorBean.conversor.convertida}">
+		</h:outputText>
+		
+			<h:outputText value="#{conversorBean.conversor.convertida}"
+			rendered="#{not empty conversorBean.conversor.convertida}">
+			 <f:convertNumber pattern="#0.00"/>
+		</h:outputText>
+		
+		<h:outputText value=" Dólares americano."
+			rendered="#{not empty conversorBean.conversor.convertida}">
+		</h:outputText>
+		<h:messages/>
+	</h:form>
+    </h:body>
+</html>
+
